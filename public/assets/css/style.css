@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* GERAL */
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.container-header {
+  max-width: 520px;
+  margin: auto;
+  background-color: #fdfdfd;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 2px 2px 90px #7c7c7c;
+}
+
+h3 {
+  text-align: center;
+}
+
+h1,
+h3,
+p {
+  color: #333;
+  word-wrap: break-word;
+}
+
+button {
+  background-color: #555;
+  color: #dcdcdc;
+  border: 2px solid #333;
+  border-radius: 2px;
+  padding: 0.3rem 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+i {
+  color: #dcdcdc;
+}
+
+input {
+  padding: 3px;
+  color: #7c7c7c;
+  border: 2px solid #333;
+  border-radius: 2px;
+}
+
+input::placeholder {
+  color: #7c7c7c;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(40%);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s;
+}
+
+.container-header header {
+  text-align: center;
+}
+
+#form-add,
+#form-edit {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.form-control {
+  display: flex;
+}
+
+.form-control input {
+  margin-right: 0.3rem;
+}
+
+#save-form {
+  margin-left: 1rem;
+}
+
+/* FRAME */
+
+.btn-frame {
+  display: flex;
+  justify-content: space-around;
+}
+
+li::marker {
+  color: #333;
+}
