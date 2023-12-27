@@ -2,8 +2,7 @@
 <html>
 
 <head>
-    <?php 
-    session_start();
+    <?php
     include "../includes/links.php"; 
     ?>
     <link rel="shortcut icon" href="../public/assets/img/lista-de-controle.png" type="image/x-icon">
