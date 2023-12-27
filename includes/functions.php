@@ -6,7 +6,8 @@ if ($_POST) {
     if (isset($_SESSION['taskList'])) {
         $arr = $_SESSION['taskList'];
     }
-    $arrInputs = ['name' => $_POST['inputText'], 'date' => date('d/m/Y', strtotime($_POST['inputDate']))];
+    $date = $_POST['inputDate'] == null ? '' : date('d/m/Y', strtotime($_POST['inputDate']));
+    $arrInputs = ['name' => $_POST['inputText'], 'date' => $date];
     array_push($arr, $arrInputs);
     $_SESSION['taskList'] = $arr;
 }
@@ -16,10 +17,9 @@ function createTaskList()
 {
     $displayedTasks = [];
     foreach ($_SESSION['taskList'] as $task) {
-        $displayDate = ($task['date'] === '') ? null : $task['date'];
-        $taskIdentifier = $task['name'] . '-' . $displayDate;
+        $taskIdentifier = $task['name'] . ' - ' . $task['date'];
         if (!array_key_exists($taskIdentifier, $displayedTasks)) {
-            echo "<li><input style='border: 0; font-size: 16px; color: #333; padding: 0;' value='" . $task['name'] . " - " . $displayDate . "'></li>";
+            echo "<li><input id='inputNameList' style='border: 0; font-size: 16px; color: #333; padding: 0;' value='" . $taskIdentifier . "'></li>";
             $displayedTasks[$taskIdentifier] = true; // EVITA REPETIÇÃO DE ELEMENTO IGUAL
         }
     }
@@ -34,12 +34,13 @@ function createFrame()
             <ul class='task-list' style='padding: 0 2rem'>";
         createTaskList();
         echo "</ul>
-        <div class='btn-frame'>
-                <form method='post' action=''>
+                <div style='display: flex; justify-content: space-around'>
+                <form id='btn-form' method='post' action='../includes/downloadList.php'>
                     <button id='download-list' type='submit' name='download'>Download</button>";
-                    include "../includes/downloadList.php";
-                echo "</form>
-            </div>
+        echo "</form>
+        <button><a href='../app/Logout.php'>Logout</a></button>
+        </div>
+        </div>
         </div>";
     }
 }
