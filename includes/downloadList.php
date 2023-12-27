@@ -1,17 +1,20 @@
 <?php
 
+session_start();
+
 function downloadListToCsv($delimiter)
 {
     $headers = ["Nome", "Data"];
 
-    $f = fopen("Tarefas.csv", 'w');
+    $filePath = $_SERVER["DOCUMENT_ROOT"] . "/Tarefas.csv";
+
+    $f = fopen($filePath, 'w');
 
     fputcsv($f, $headers, $delimiter);
 
     $displayedTasks = [];
     foreach ($_SESSION["taskList"] as $task) {
-        $displayDate = ($task['date'] !== null && $task['date'] !== '') ? $task['date'] : '';
-        $taskIdentifier = $task['name'] . '-' . $displayDate;
+        $taskIdentifier = $task['name'] . '-' . $task['date'];
         if (!array_key_exists($taskIdentifier, $displayedTasks)) {
             fputcsv($f, explode('-', $taskIdentifier), $delimiter);
             $displayedTasks[$taskIdentifier] = true;
@@ -23,4 +26,5 @@ function downloadListToCsv($delimiter)
 
 if (isset($_POST["download"])) {
     downloadListToCsv(',');
+    header('Location: ../app/AddTask.php');
 }
