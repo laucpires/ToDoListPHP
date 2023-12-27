@@ -5,7 +5,7 @@ const addInputDate = document.getElementById("form-input-date");
 const downloadList = document.getElementById("download-list");
 const taskList = document.getElementsByClassName("task-list")[0];
 
-if (taskList && taskList.hasChildNodes) { // ???
+if (taskList && taskList.hasChildNodes) {
   downloadList.classList.remove("hide");
 }
 
